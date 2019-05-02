@@ -1,0 +1,1 @@
+# frequencimetro_por_codigo
