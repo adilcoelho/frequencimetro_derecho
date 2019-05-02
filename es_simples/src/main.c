@@ -6,11 +6,9 @@
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/systick.h"
+#include "driverlib/timer.h"
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
-
-#define AMOSTRAUMSEG 1262559 // 631711 * 1,7262 *1,15
-#define AMOSTRAUMMILI 1261 // 632 * 1,99 * 1,053
 
 
 uint32_t g_ui32SysClock;
@@ -49,21 +47,32 @@ void main(void){
                                               SYSCTL_CFG_VCO_480),
                                               24000000); // PLL em 24MHz
   g_ui32SysClock = ui32SysClock;
-   //iartheworld
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION); 
-  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)); // Aguarda final da habilita��o
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM); 
-  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOM)); // Aguarda final da habilita��o
+   // GPIO initialization
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); 
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)); // Aguarda final da habilita��o
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ); 
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOJ)); // Aguarda final da habilita��o
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOL); 
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOL)); // Aguarda final da habilita��o
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION); 
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)); // Aguarda final da habilita��o
   
   GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0); 
   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3); 
-  GPIOPinTypeGPIOInput(GPIO_PORTM_BASE, GPIO_PIN_3); 
-  GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1); 
+  
+  GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  GPIOPinTypeTimer(GPIO_PORTL_BASE, GPIO_PIN_4); // -------------- paramos aqui, c'est fini selon les français.
   GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);
+  
+  //Timer initialization iarde wor
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); 
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0)); // Aguarda final da habilita��o
+  TimerConfigure(TIMER0_BASE, (TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_CAP_COUNT));
+  TimerControlEvent(TIMER0_BASE, TIMER_A, TIMER_EVENT_POS_EDGE);
+  TimerEnable(TIMER0_BASE, TIMER_A);
+  
+  
+  
   ConfigureUART();
   
    int numamostras = AMOSTRAUMSEG;

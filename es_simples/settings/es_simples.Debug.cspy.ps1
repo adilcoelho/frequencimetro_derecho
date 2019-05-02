@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\settings\es_simples.Debug.general.xcl" --backend -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\settings\es_simples.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\settings\es_simples.Debug.general.xcl" --backend -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\settings\es_simples.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\settings\es_simples.Debug.general.xcl" --debug_file=$debugfile --backend -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\settings\es_simples.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\common\bin\cspybat" -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\settings\es_simples.Debug.general.xcl" --debug_file=$debugfile --backend -f "H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\settings\es_simples.Debug.driver.xcl" 
 }
