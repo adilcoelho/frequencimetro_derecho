@@ -47,12 +47,21 @@ void SysTick_Handler()
   if(SysTick_count >= 2)
   {
     SysTick_count = 0;
-    if(GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_0))
-      GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
-    else
-      GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+    
   }
   
+}
+
+static void
+PortJ_IntHandler(void)
+{
+    //
+    // Go into an infinite loop.
+    //
+    
+      int x=10;
+      x=x+10;
+      GPIOIntClear(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
 }
 
 
@@ -82,9 +91,15 @@ void main(void){
   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3); 
   
   GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); // configure button pins with pull ups7
+  GPIOIntTypeSet(GPIO_PORTJ_BASE, GPIO_INT_PIN_0 | GPIO_INT_PIN_1, GPIO_BOTH_EDGES);
+  GPIOIntEnable(GPIO_PORTJ_BASE, GPIO_INT_PIN_0 | GPIO_INT_PIN_1);
+  GPIOIntRegister(GPIO_PORTJ_BASE, PortJ_IntHandler);
+  
   GPIOPinConfigure(GPIO_PL4_T0CCP0);
-  GPIOPinTypeTimer(GPIO_PORTL_BASE, GPIO_PIN_4); // -------------- paramos aqui, c'est fini selon les français.
-  GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); // configure button pins with pull ups
+  GPIOPinTypeTimer(GPIO_PORTL_BASE, GPIO_PIN_4);
+  
+  
   
   //Timer initialization iarde wor
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); 
