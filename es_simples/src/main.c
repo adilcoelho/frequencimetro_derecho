@@ -39,12 +39,20 @@ ConfigureUART(void)
     UARTStdioConfig(0, 115200, g_ui32SysClock);
 }
 
+int SysTick_count = 0;
+
 void SysTick_Handler() 
 {
-  if(GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_0))
-    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
-  else
-    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+  SysTick_count++;
+  if(SysTick_count >= 2)
+  {
+    SysTick_count = 0;
+    if(GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_0))
+      GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
+    else
+      GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+  }
+  
 }
 
 
@@ -59,6 +67,8 @@ void main(void){
   
   
    // GPIO initialization
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD); 
+  while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOD)); // Aguarda final da habilita��o
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); 
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)); // Aguarda final da habilita��o
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ); 
@@ -72,18 +82,19 @@ void main(void){
   GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3); 
   
   GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  GPIOPinConfigure(GPIO_PL4_T0CCP0);
   GPIOPinTypeTimer(GPIO_PORTL_BASE, GPIO_PIN_4); // -------------- paramos aqui, c'est fini selon les français.
   GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); // configure button pins with pull ups
   
   //Timer initialization iarde wor
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); 
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER0)); // Aguarda final da habilita��o
-  TimerConfigure(TIMER0_BASE, (TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_CAP_COUNT));
+  TimerConfigure(TIMER0_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_CAP_COUNT_UP);
   TimerControlEvent(TIMER0_BASE, TIMER_A, TIMER_EVENT_POS_EDGE);
   TimerEnable(TIMER0_BASE, TIMER_A);
   
   // SysTick Initialization
-  SysTickPeriodSet(24000000);
+  SysTickPeriodSet(12000);
   SysTickIntEnable();
   SysTickEnable();
   

@@ -5,85 +5,74 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\..\inc\hw_memmap.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\startup_ewarm.o</file>
-            <file>$PROJ_DIR$\..\driverlib\debug.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-            <file>$PROJ_DIR$\..\driverlib\interrupt.h</file>
-            <file>$PROJ_DIR$\..\driverlib\ewarm\Exe\driverlib.a</file>
-            <file>$PROJ_DIR$\src\startup_ewarm.c</file>
-            <file>$PROJ_DIR$\src\main.c</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
             <file>$PROJ_DIR$\..\utils\uartstdio.c</file>
-            <file>$PROJ_DIR$\..\utils\uartstdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$PROJ_DIR$\Debug\Obj\startup_ewarm.pbi</file>
+            <file>$PROJ_DIR$\..\driverlib\interrupt.h</file>
             <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\es_simples.pbd</file>
+            <file>$PROJ_DIR$\src\main.c</file>
             <file>$PROJ_DIR$\..\inc\hw_ints.h</file>
-            <file>$PROJ_DIR$\..\driverlib\gpio.h</file>
-            <file>$PROJ_DIR$\Debug\Exe\es_simples.out</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
-            <file>$PROJ_DIR$\Debug\Obj\uartstdio.pbi</file>
-            <file>$PROJ_DIR$\..\inc\tm4c1294ncpdt.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\uartstdio.o</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$PROJ_DIR$\..\inc\hw_nvic.h</file>
-            <file>$PROJ_DIR$\..\driverlib\rom_map.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\startup_ewarm.__cstat.et</file>
-            <file>$PROJ_DIR$\..\driverlib\rom.h</file>
-            <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
-            <file>$PROJ_DIR$\..\driverlib\sysctl.h</file>
-            <file>$PROJ_DIR$\..\driverlib\systick.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\src\startup_ewarm.c</file>
+            <file>$PROJ_DIR$\..\utils\uartstdio.h</file>
+            <file>$PROJ_DIR$\..\inc\hw_memmap.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\es_simples.pbd</file>
+            <file>$PROJ_DIR$\Debug\Obj\startup_ewarm.o</file>
+            <file>$PROJ_DIR$\..\driverlib\ewarm\Exe\driverlib.a</file>
+            <file>$PROJ_DIR$\..\driverlib\debug.h</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\..\inc\tm4c1294ncpdt.h</file>
             <file>$PROJ_DIR$\Debug\List\es_simples.map</file>
-            <file>$PROJ_DIR$\..\driverlib\uart.h</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C1294NC.icf</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
             <file>$PROJ_DIR$\..\inc\hw_types.h</file>
             <file>$PROJ_DIR$\..\driverlib\pin_map.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\uartstdio.pbi</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\uartstdio.o</file>
+            <file>$PROJ_DIR$\..\driverlib\gpio.h</file>
+            <file>$PROJ_DIR$\..\driverlib\uart.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\es_simples.out</file>
+            <file>$PROJ_DIR$\..\driverlib\sysctl.h</file>
+            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C1294NC.icf</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\..\inc\hw_nvic.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\..\driverlib\systick.h</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\startup_ewarm.__cstat.et</file>
             <file>$PROJ_DIR$\..\inc\hw_uart.h</file>
+            <file>$PROJ_DIR$\..\driverlib\rom_map.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+            <file>$PROJ_DIR$\..\driverlib\rom.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
             <file>$PROJ_DIR$\..\driverlib\timer.h</file>
+            <file>C:\Users\adilc\Downloads\Tiva_IAR8\driverlib\gpio.c</file>
+            <file>$PROJ_DIR$\..\driverlib\gpio.c</file>
         </outputs>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\..\utils\uartstdio.c</name>
             <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 16 37</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\src\startup_ewarm.c</name>
-            <outputs>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 11</file>
-                </tool>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 1</file>
+                    <file> 23</file>
                 </tool>
                 <tool>
-                    <name>__cstat</name>
-                    <file> 30</file>
+                    <name>BICOMP</name>
+                    <file> 21</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 18 41 3 27 40 36 8 25</file>
+                    <name>ICCARM</name>
+                    <file> 34 29 41 2 38 15 0 7 10 19 36 14 4 40 37 27 25 9</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 25 40 3 18 36 8 27 41</file>
+                    <name>BICOMP</name>
+                    <file> 4 10 25 5 36 37 41 38 29 7 19 14 40 27 9 2 15 0 34</file>
                 </tool>
             </inputs>
         </file>
@@ -91,49 +80,53 @@
             <name>$PROJ_DIR$\src\main.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 35</file>
-                </tool>
-                <tool>
                     <name>ICCARM</name>
-                    <file> 29</file>
+                    <file> 43</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 20</file>
+                    <file> 42</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 31</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 8 44 12 33 3 22 42 10 36 40 25 0 15 34 38 18 17</file>
+                    <name>ICCARM</name>
+                    <file> 34 29 41 2 38 15 0 17 10 27 24 20 32 44 25 9</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 17 25 40 3 18 36 8 22 0 33 15 42 34 44 38 10</file>
+                    <name>BICOMP</name>
+                    <file> 44 5 27 17 20 9 41 38 29 10 24 32 25 2 15 0 34</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\utils\uartstdio.c</name>
+            <name>$PROJ_DIR$\src\startup_ewarm.c</name>
             <outputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 21</file>
+                    <name>ICCARM</name>
+                    <file> 12</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 23</file>
+                    <name>__cstat</name>
+                    <file> 35</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 3</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>BICOMP</name>
-                    <file> 4 0 38 12 43 28 40 18 25 14 41 2 31 33 10 3 36 8 17</file>
+                    <name>ICCARM</name>
+                    <file> 29 41 2 38 15 0 30 19</file>
                 </tool>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 17 25 40 3 18 36 8 14 0 41 43 2 4 31 28 33 38 10</file>
+                    <name>BICOMP</name>
+                    <file> 41 0 19 15 30 2 38 29</file>
                 </tool>
             </inputs>
         </file>
@@ -142,15 +135,24 @@
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 37</file>
+                    <file> 18</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 39 5 29 1 23 24 26 32 19</file>
+                    <file> 28 13 43 12 23 22 33 39 16</file>
                 </tool>
             </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 26 18</file>
+                </tool>
+            </outputs>
         </file>
     </configuration>
     <configuration>
