@@ -39,6 +39,15 @@ ConfigureUART(void)
     UARTStdioConfig(0, 115200, g_ui32SysClock);
 }
 
+void SysTick_Handler() 
+{
+  if(GPIOPinRead(GPIO_PORTN_BASE, GPIO_PIN_0))
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
+  else
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
+}
+
+
 
 void main(void){
   uint32_t ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
@@ -47,6 +56,8 @@ void main(void){
                                               SYSCTL_CFG_VCO_480),
                                               24000000); // PLL em 24MHz
   g_ui32SysClock = ui32SysClock;
+  
+  
    // GPIO initialization
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); 
   while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOF)); // Aguarda final da habilita��o
@@ -62,7 +73,7 @@ void main(void){
   
   GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
   GPIOPinTypeTimer(GPIO_PORTL_BASE, GPIO_PIN_4); // -------------- paramos aqui, c'est fini selon les français.
-  GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU);
+  GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); // configure button pins with pull ups
   
   //Timer initialization iarde wor
   SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0); 
@@ -71,37 +82,43 @@ void main(void){
   TimerControlEvent(TIMER0_BASE, TIMER_A, TIMER_EVENT_POS_EDGE);
   TimerEnable(TIMER0_BASE, TIMER_A);
   
+  // SysTick Initialization
+  SysTickPeriodSet(24000000);
+  SysTickIntEnable();
+  SysTickEnable();
+  
   
   
   ConfigureUART();
+  while (1);
   
-   int numamostras = AMOSTRAUMSEG;
-  while(1)
-  {
-    int contagem = 0;
-    int i;
-    int leitura = GPIOPinRead(GPIO_PORTJ_BASE, GPIO_PIN_1 | GPIO_PIN_0);
-    switch(leitura) 
-    {
-      case GPIO_PIN_0: numamostras = AMOSTRAUMSEG;
-      break;
-      
-      case GPIO_PIN_1: numamostras = AMOSTRAUMMILI;
-      break;
-    }
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 , GPIO_PIN_3); 
-    int leituraAnterior = GPIOPinRead(GPIO_PORTM_BASE, GPIO_PIN_3);
-    for(i = 0; i < numamostras; i++)
-    {
-      int a = GPIOPinRead(GPIO_PORTM_BASE, GPIO_PIN_3);
-      if (a != leituraAnterior && a == GPIO_PIN_3)
-      {
-        contagem++;
-      }
-      leituraAnterior = a;
-    }
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 , 0); 
-    
-    UARTprintf("%d\n", contagem);
-  }
+//   int numamostras = AMOSTRAUMSEG;
+//  while(1)
+//  {
+//    int contagem = 0;
+//    int i;
+//    int leitura = GPIOPinRead(GPIO_PORTJ_BASE, GPIO_PIN_1 | GPIO_PIN_0);
+//    switch(leitura) 
+//    {
+//      case GPIO_PIN_0: numamostras = AMOSTRAUMSEG;
+//      break;
+//      
+//      case GPIO_PIN_1: numamostras = AMOSTRAUMMILI;
+//      break;
+//    }
+//    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 , GPIO_PIN_3); 
+//    int leituraAnterior = GPIOPinRead(GPIO_PORTM_BASE, GPIO_PIN_3);
+//    for(i = 0; i < numamostras; i++)
+//    {
+//      int a = GPIOPinRead(GPIO_PORTM_BASE, GPIO_PIN_3);
+//      if (a != leituraAnterior && a == GPIO_PIN_3)
+//      {
+//        contagem++;
+//      }
+//      leituraAnterior = a;
+//    }
+//    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3 , 0); 
+//    
+//    UARTprintf("%d\n", contagem);
+//  }
 }

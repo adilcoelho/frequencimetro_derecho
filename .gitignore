@@ -1,4 +1,4 @@
-// Compilation output
 
-./es_simples/Debug
-./driverlib/ewarm
+
+es_simples/Debug/
+driverlib/ewarm/
