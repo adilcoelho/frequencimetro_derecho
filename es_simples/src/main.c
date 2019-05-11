@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "inc/tm4c1294ncpdt.h" // CMSIS-Core
 #include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
 #include "driverlib/sysctl.h" // driverlib
 #include "driverlib/gpio.h"
 #include "driverlib/pin_map.h"
@@ -40,6 +41,8 @@ ConfigureUART(void)
 }
 
 int SysTick_count = 0;
+int freq;
+int freqAcquired = 0;
 
 void SysTick_Handler() 
 {
@@ -47,10 +50,17 @@ void SysTick_Handler()
   if(SysTick_count >= 2)
   {
     SysTick_count = 0;
+    freq = TimerValueGet(TIMER0_BASE, TIMER_A);
+    freqAcquired = 1;
+    HWREG(TIMER0_BASE+0x50)=0; // reset timer
+    TimerDisable(TIMER0_BASE, TIMER_A); 
+    
     
   }
   
 }
+
+
 
 static void
 PortJ_IntHandler(void)
@@ -109,14 +119,23 @@ void main(void){
   TimerEnable(TIMER0_BASE, TIMER_A);
   
   // SysTick Initialization
-  SysTickPeriodSet(12000);
+  SysTickPeriodSet(12000000);
   SysTickIntEnable();
   SysTickEnable();
   
   
   
   ConfigureUART();
-  while (1);
+  while (1)
+  {
+    if(freqAcquired)
+    {
+      UARTprintf("Frequência: %d Hz\n", freq);
+      freqAcquired = 0;
+      TimerEnable(TIMER0_BASE, TIMER_A);
+    }
+    
+  }
   
 //   int numamostras = AMOSTRAUMSEG;
 //  while(1)
