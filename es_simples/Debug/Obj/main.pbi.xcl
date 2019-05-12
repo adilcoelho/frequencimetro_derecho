@@ -1,17 +1,17 @@
-"H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\src\main.c"
+"F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\src\main.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\src
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\src
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\..\..\..
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\..\..\..
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\..
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\..
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\..\inc
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\..\inc
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\es_simples\..\driverlib
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\es_simples\..\driverlib
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CMSIS\Core\Include
 -I
@@ -21,13 +21,13 @@ C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc\c
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados
+F:\UTFPR\8Periodo
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\inc
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\inc
 -I
-H:\UTFPR\8Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_derecho\driverlib
+F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\driverlib
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CMSIS\Core\Include
 -I

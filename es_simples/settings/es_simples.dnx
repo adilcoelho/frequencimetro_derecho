@@ -5,7 +5,7 @@
         <LMIFTDIfoundProbes />
     </LMIFTDIDriver>
     <DebugChecksum>
-        <Checksum>3624701327</Checksum>
+        <Checksum>4175463766</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -33,10 +33,7 @@
     </DisassembleMode>
     <Breakpoints>
         <Bp0>_ "STD_CODE" "{$PROJ_DIR$\src\startup_ewarm.c}.297.5" 1 0 0 0 "" 0 ""</Bp0>
-        <Bp1>_ "STD_CODE" "{$PROJ_DIR$\src\main.c}.73.7" 1 0 0 0 "" 0 ""</Bp1>
-        <Bp2>_ "STD_CODE" "{$PROJ_DIR$\src\main.c}.52.5" 1 0 0 0 "" 0 ""</Bp2>
-        <Bp3>_ "STD_CODE" "{$PROJ_DIR$\src\main.c}.124.3" 1 0 0 0 "" 0 ""</Bp3>
-        <Count>4</Count>
+        <Count>1</Count>
     </Breakpoints>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
@@ -48,11 +45,12 @@
         <Category>_ 0</Category>
     </LogFile>
     <Aliases>
-        <A0>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\systick.c" ""</A0>
-        <A1>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\timer.c" ""</A1>
-        <A2>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\uart.c" ""</A2>
-        <A3>_ "H:\UTFPR\8 Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\src\main.c" ""</A3>
-        <Count>4</Count>
+        <A0>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\sysctl.c" ""</A0>
+        <A1>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\systick.c" ""</A1>
+        <A2>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\timer.c" ""</A2>
+        <A3>_ "C:\Users\adilc\OneDrive - alunos.utfpr.edu.br\UTFPR\Engenharia\8 Periodo\Sistemas Embarcados\Lab1\frequencimetro_por_codigo\driverlib\uart.c" "F:\UTFPR\8Periodo\SistEmb\frequencimetro_derecho\driverlib\uart.c"</A3>
+        <A4>_ "H:\UTFPR\8 Periodo\Sistemas Embarcados\Frequencimetro por codigo\frequencimetro_por_codigo\es_simples\src\main.c" ""</A4>
+        <Count>5</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
     <CallStackLog>
