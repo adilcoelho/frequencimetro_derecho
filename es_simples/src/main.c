@@ -14,7 +14,7 @@
 
 #define Ticks_Hz 12e6
 #define Ticks_kHz 20e3
-#define F_CLK 24e6
+#define F_CLK 120e6
 #define LOST_TIME 2.5E-6
 
 
@@ -60,7 +60,7 @@ void SysTick_Handler()
     freqAcquired = 1;
     TimerPrescaleSet(TIMER0_BASE, TIMER_A, 0xff);
     HWREG(TIMER0_BASE+0x50)=0xFFFFFF; // reset timer
-     
+    TimerEnable(TIMER0_BASE, TIMER_A);
   }
   
 }
@@ -180,7 +180,7 @@ void main(void){
   {
     if(freqAcquired)
     {
-      int freq_o = (int)((float)freq / (1-LOST_TIME));
+      int freq_o = (F_CLK != 120e6)? (int)((float)freq / (1-LOST_TIME)) : freq;
       UARTprintf("Frequência: %d Hz\n", freq_o);
       freqAcquired = 0;
     }
