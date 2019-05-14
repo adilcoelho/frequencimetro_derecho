@@ -15,6 +15,7 @@
 #define Ticks_Hz 12e6
 #define Ticks_kHz 20e3
 #define F_CLK 24e6
+#define LOST_TIME 2.5E-6
 
 
 uint32_t g_ui32SysClock;
@@ -51,15 +52,14 @@ int freqAcquired = 0;
 
 void SysTick_Handler() 
 {
+  freq = 0xFFFFFF - TimerValueGet(TIMER0_BASE, TIMER_A);
   SysTick_count++;
   if(SysTick_count >= 2 * (g_ui32SysClock/24e6))
   {
     SysTick_count = 0;
-    TimerDisable(TIMER0_BASE, TIMER_A); 
-    freq = 0xFFFFFF - TimerValueGet(TIMER0_BASE, TIMER_A);
     freqAcquired = 1;
-    HWREG(TIMER0_BASE+0x50)=0xFFFFFF; // reset timer
     TimerPrescaleSet(TIMER0_BASE, TIMER_A, 0xff);
+    HWREG(TIMER0_BASE+0x50)=0xFFFFFF; // reset timer
      
   }
   
@@ -180,9 +180,9 @@ void main(void){
   {
     if(freqAcquired)
     {
-      UARTprintf("Frequência: %d Hz\n", freq);
+      int freq_o = (int)((float)freq / (1-LOST_TIME));
+      UARTprintf("Frequência: %d Hz\n", freq_o);
       freqAcquired = 0;
-      TimerEnable(TIMER0_BASE, TIMER_A);
     }
     
   }
