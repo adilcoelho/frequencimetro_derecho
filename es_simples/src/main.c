@@ -65,7 +65,7 @@ void SysTick_Handler()
   
 }
 
-
+int escala = 0; // 0 - Hz, 1 - kHz
 
 static void
 PortJ_IntHandler(void)
@@ -73,10 +73,8 @@ PortJ_IntHandler(void)
     //
     // Go into an infinite loop.
     //
-    
-      int x=10;
-      x=x+10;
-      GPIOIntClear(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  escala = escala ? 0 : 1;
+  GPIOIntClear(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
 }
 
 void ConfigurePWM0()
@@ -151,7 +149,7 @@ void main(void){
   
   GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1);
   GPIOPadConfigSet(GPIO_PORTJ_BASE, GPIO_PIN_0 | GPIO_PIN_1, GPIO_STRENGTH_2MA, GPIO_PIN_TYPE_STD_WPU); // configure button pins with pull ups7
-  GPIOIntTypeSet(GPIO_PORTJ_BASE, GPIO_INT_PIN_0 | GPIO_INT_PIN_1, GPIO_BOTH_EDGES);
+  GPIOIntTypeSet(GPIO_PORTJ_BASE, GPIO_INT_PIN_0 | GPIO_INT_PIN_1, GPIO_RISING_EDGE);
   GPIOIntEnable(GPIO_PORTJ_BASE, GPIO_INT_PIN_0 | GPIO_INT_PIN_1);
   GPIOIntRegister(GPIO_PORTJ_BASE, PortJ_IntHandler);
   
@@ -181,7 +179,15 @@ void main(void){
     if(freqAcquired)
     {
       int freq_o = (F_CLK != 120e6)? (int)((float)freq / (1-LOST_TIME)) : freq;
-      UARTprintf("Frequência: %d Hz\n", freq_o);
+      if(!escala) // Hz
+      {
+        UARTprintf("Frequência: %d Hz\n", freq_o);
+      }
+      else // kHz
+      {
+        UARTprintf("Frequência: %d kHz\n", freq_o/1000);
+      }
+     
       freqAcquired = 0;
     }
     
